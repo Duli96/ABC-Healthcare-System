@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "d6XCYOIKjJU=",
+  "success": true,
+  "projectFilePath": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/PatientService.csproj",
+  "expectedPackageFiles": [
+    "/Users/dulinigunasekara/.nuget/packages/microsoft.aspnetcore.openapi/9.0.0/microsoft.aspnetcore.openapi.9.0.0.nupkg.sha512",
+    "/Users/dulinigunasekara/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}
