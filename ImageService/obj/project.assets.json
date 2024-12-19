@@ -967,6 +967,25 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "PatientService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.AspNetCore.OpenApi": "8.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.2",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
+          "Swashbuckle.AspNetCore": "6.5.0"
+        },
+        "compile": {
+          "bin/placeholder/PatientService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PatientService.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -2708,6 +2727,11 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "PatientService/1.0.0": {
+      "type": "project",
+      "path": "../PatientService/PatientService.csproj",
+      "msbuildProject": "../PatientService/PatientService.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2715,6 +2739,7 @@
       "Microsoft.AspNetCore.OpenApi >= 8.0.0",
       "Microsoft.EntityFrameworkCore >= 8.0.2",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.2",
+      "PatientService >= 1.0.0",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.2",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
@@ -2743,7 +2768,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/PatientService.csproj": {
+              "projectPath": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/PatientService.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

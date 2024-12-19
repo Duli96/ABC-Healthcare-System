@@ -1,11 +1,23 @@
 {
   "Version": 1,
-  "Hash": "dt5ewWYDvVt09OnxW5O2M83Rd0+TfqdkG0zMcJqlqbA=",
+  "Hash": "8AAGTOEmbRFFkcVhvg6i00Wnxbi9dNwsoyqjB7ReXls=",
   "Source": "ImageService",
   "BasePath": "_content/ImageService",
   "Mode": "Default",
   "ManifestType": "Build",
-  "ReferencedProjectsConfiguration": [],
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/PatientService.csproj",
+      "Version": 2,
+      "Source": "PatientService",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
   "DiscoveryPatterns": [],
   "Assets": [],
   "Endpoints": []
