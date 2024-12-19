@@ -10,7 +10,7 @@ namespace PatientService.Models
         public DateTime DateDiagnosed { get; set; }
 
         // Navigation property for tasks
-        public ICollection<Task> Tasks { get; set; } = new List<Task>();
+        public ICollection<MedicalProcedure> Tasks { get; set; } = new List<Task>();
 
         public Condition()
         {

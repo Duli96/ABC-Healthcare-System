@@ -7,7 +7,7 @@ namespace PatientService.Models{
         public DateTime CreatedAt { get; set; }
 
         // Collection of tasks
-        public ICollection<Task> Tasks { get; set; } = new List<Task>();
+        public ICollection<MedicalProcedure> Tasks { get; set; } = new List<Task>();
         
         public Patient()
         {
