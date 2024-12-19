@@ -6,8 +6,8 @@ namespace PatientService.Models{
         public DateTime DateOfBirth { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        // Collection of tasks
-        public ICollection<MedicalProcedure> Tasks { get; set; } = new List<Task>();
+        // Collection of procedures
+        public ICollection<MedicalProcedure> Procedures { get; set; } = new List<MedicalProcedure>();
         
         public Patient()
         {

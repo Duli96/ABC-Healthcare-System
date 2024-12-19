@@ -3,7 +3,6 @@ namespace PatientService.Models
     public class MedicalProcedure
     {
         public int Id { get; set; }
-        // Example: "MRI Scan"
         public string Description { get; set; } = string.Empty; 
         public DateTime TimeStamp { get; set; }
 
@@ -19,6 +18,5 @@ namespace PatientService.Models
         {
             TimeStamp = DateTime.UtcNow;
         }
-   
     }
 }

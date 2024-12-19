@@ -9,20 +9,19 @@ namespace PatientService.Data
 
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Condition> Conditions { get; set; }
-        public DbSet<Task> Tasks { get; set; }
-
+        public DbSet<MedicalProcedure> Procedures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Task>()
-                .HasOne(t => t.Patient)
-                .WithMany(p => p.Tasks)
-                .HasForeignKey(t => t.PatientId);
+            modelBuilder.Entity<MedicalProcedure>()
+                .HasOne(p => p.Patient)
+                .WithMany(p => p.Procedures)
+                .HasForeignKey(p => p.PatientId);
 
-            modelBuilder.Entity<Task>()
-                .HasOne(t => t.Condition)
-                .WithMany(c => c.Tasks)
-                .HasForeignKey(t => t.ConditionId);
+            modelBuilder.Entity<MedicalProcedure>()
+                .HasOne(p => p.Condition)
+                .WithMany(c => c.Procedures)
+                .HasForeignKey(p => p.ConditionId);
         }
     }
 }
