@@ -12,6 +12,7 @@ builder.Services.AddDbContext<PatientDbContext>(options =>
 
 // Register the IPatientService and its implementation
 builder.Services.AddScoped<IPatientService, PatientServiceImpl>();
+builder.Services.AddScoped<IMedicalProcedureService, MedicalProcedureServiceImpl>();
 
 // Add OpenAPI / Swagger generation services
 builder.Services.AddEndpointsApiExplorer(); // Replaces AddOpenApi
