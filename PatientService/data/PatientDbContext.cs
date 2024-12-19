@@ -9,7 +9,7 @@ namespace PatientService.Data
 
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Condition> Conditions { get; set; }
-        public DbSet<MedicalProcedure> Procedures { get; set; }
+        public DbSet<MedicalProcedure> MedicalProcedures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

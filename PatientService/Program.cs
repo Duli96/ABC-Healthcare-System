@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PatientService.Data;
+using PatientService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<PatientDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 29))));
+
+// Register the IPatientService and its implementation
+builder.Services.AddScoped<IPatientService, PatientServiceImpl>();
 
 // Add OpenAPI / Swagger generation services
 builder.Services.AddEndpointsApiExplorer(); // Replaces AddOpenApi
