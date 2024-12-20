@@ -3,11 +3,13 @@ using Shared.Models;
 using PatientService.Services;
 using Microsoft.EntityFrameworkCore;
 using PatientService.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PatientService.Controllers
 {
     [Route("api/patient")]
     [ApiController]
+    [Authorize] 
     public class PatientController : ControllerBase
     {
         private readonly IPatientService _patientService;
@@ -18,6 +20,7 @@ namespace PatientService.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "ADMIN,DOCTOR,NURSE")] 
         public async Task<ActionResult<IEnumerable<Patient>>> GetPatients()
         {
             var patients = await _patientService.GetPatientsAsync();
@@ -25,6 +28,7 @@ namespace PatientService.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "ADMIN,DOCTOR,NURSE")] 
         public async Task<ActionResult<Patient>> GetPatient(int id)
         {
             var patient = await _patientService.GetPatientByIdAsync(id);
@@ -33,6 +37,7 @@ namespace PatientService.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "ADMIN,DOCTOR")] 
         public async Task<ActionResult<Patient>> CreatePatient(Patient patient)
         {
             var createdPatient = await _patientService.CreatePatientAsync(patient);
@@ -40,6 +45,7 @@ namespace PatientService.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "ADMIN,DOCTOR,NURSE")] 
         public async Task<IActionResult> UpdatePatient(int id, Patient patient)
         {
             if (id != patient.Id)
@@ -52,6 +58,7 @@ namespace PatientService.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")] 
         public async Task<IActionResult> DeletePatient(int id)
         {
             var patient = await _patientService.GetPatientByIdAsync(id);
