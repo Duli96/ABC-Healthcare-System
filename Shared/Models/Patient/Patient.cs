@@ -7,8 +7,8 @@ namespace Shared.Models
     public class Patient
     {
         public int Id { get; set; }
-        public string firstName { get; set; } = string.Empty;
-        public string lastName { get; set; } = string.Empty;
+        public string FirstName { get; set; } = string.Empty;
+        public string LastName { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
         public DateTime DateOfBirth { get; set; }
         public DateTime CreatedAt { get; set; }
