@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using PatientService.Models;
+using Shared.Models;
 using PatientService.Services;
 using Microsoft.EntityFrameworkCore;
 using PatientService.Data;

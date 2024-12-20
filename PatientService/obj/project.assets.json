@@ -967,6 +967,19 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "8.0.2"
+        },
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        }
       }
     }
   },
@@ -2708,6 +2721,11 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2716,6 +2734,7 @@
       "Microsoft.EntityFrameworkCore >= 8.0.2",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.2",
       "Pomelo.EntityFrameworkCore.MySql >= 8.0.2",
+      "Shared >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -2743,7 +2762,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/Shared/Shared.csproj": {
+              "projectPath": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/Shared/Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

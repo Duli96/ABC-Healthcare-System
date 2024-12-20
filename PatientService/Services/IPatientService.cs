@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using PatientService.Models;
+using Shared.Models;
 
 namespace PatientService.Services
 {

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PatientService.Data;
-using PatientService.Models;
+using Shared.Models;
 
 namespace PatientService.Services
 {

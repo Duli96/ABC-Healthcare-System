@@ -26,8 +26,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/PatientService.csproj": {
-                "projectPath": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/PatientService.csproj"
+              "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/Shared/Shared.csproj": {
+                "projectPath": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/Shared/Shared.csproj"
               }
             }
           }
@@ -94,14 +94,14 @@
         }
       }
     },
-    "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/PatientService.csproj": {
+    "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/Shared/Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/PatientService.csproj",
-        "projectName": "PatientService",
-        "projectPath": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/PatientService.csproj",
+        "projectUniqueName": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/Shared/Shared.csproj",
+        "projectName": "Shared",
+        "projectPath": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/Shared/Shared.csproj",
         "packagesPath": "/Users/dulinigunasekara/.nuget/packages/",
-        "outputPath": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/PatientService/obj/",
+        "outputPath": "/Users/dulinigunasekara/Downloads/Coursework/Practical Report/Project/ABC Healthcare System/Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/dulinigunasekara/.nuget/NuGet/NuGet.Config"
@@ -134,27 +134,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.2, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[8.0.2, )"
-            },
-            "Pomelo.EntityFrameworkCore.MySql": {
-              "target": "Package",
-              "version": "[8.0.2, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.5.0, )"
             }
           },
           "imports": [
@@ -169,9 +151,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using PatientService.Models;
+using Shared.Models;
 
 namespace PatientService.Data
 {

@@ -1,4 +1,4 @@
-namespace PatientService.Models
+namespace Shared.Models
 {
     public class Condition
     {

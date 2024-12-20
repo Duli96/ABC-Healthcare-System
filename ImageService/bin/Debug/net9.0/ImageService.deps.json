@@ -11,8 +11,8 @@
           "Microsoft.AspNetCore.OpenApi": "8.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.2",
           "Microsoft.EntityFrameworkCore.Design": "8.0.2",
-          "PatientService": "1.0.0",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
+          "Shared": "1.0.0",
           "Swashbuckle.AspNetCore": "6.5.0"
         },
         "runtime": {
@@ -546,15 +546,12 @@
         }
       },
       "System.Threading.Channels/6.0.0": {},
-      "PatientService/1.0.0": {
+      "Shared/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.OpenApi": "8.0.0",
-          "Microsoft.EntityFrameworkCore": "8.0.2",
-          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
-          "Swashbuckle.AspNetCore": "6.5.0"
+          "Microsoft.EntityFrameworkCore": "8.0.2"
         },
         "runtime": {
-          "PatientService.dll": {
+          "Shared.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -897,7 +894,7 @@
       "path": "system.threading.channels/6.0.0",
       "hashPath": "system.threading.channels.6.0.0.nupkg.sha512"
     },
-    "PatientService/1.0.0": {
+    "Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

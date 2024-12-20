@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using PatientService.Models;
 
-namespace ImageService.Models
+namespace Shared.Models
 {
     public class Image
     {
@@ -19,5 +18,10 @@ namespace ImageService.Models
         // Link to Patient
         public int PatientId { get; set; }
         public Patient Patient { get; set; }
+
+        public Image()
+        {
+            UploadedAt = DateTime.UtcNow;
+        }
     }
 }

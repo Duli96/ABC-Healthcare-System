@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using PatientService.Services;
-using PatientService.Models;
+using Shared.Models;
 
 namespace PatientService.Controllers
 {

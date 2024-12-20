@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using PatientService.Services;
-using PatientService.Models;
+using Shared.Models;
 
 namespace PatientService.Controllers
 {
