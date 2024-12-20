@@ -4,11 +4,13 @@ using Shared.Models;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ImageService.Controllers
 {
     [Route("api/image")]
     [ApiController]
+    [Authorize] 
     public class ImageController : ControllerBase
     {
         private readonly IImageService _imageService;
@@ -19,6 +21,7 @@ namespace ImageService.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "ADMIN,DOCTOR,NURSE,RADIOLOGIST")]
         public async Task<ActionResult<IEnumerable<Image>>> GetImages()
         {
             var images = await _imageService.GetImagesAsync();
@@ -26,6 +29,7 @@ namespace ImageService.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "ADMIN,DOCTOR,NURSE,RADIOLOGIST")]
         public async Task<ActionResult<Image>> GetImage(int id)
         {
             var image = await _imageService.GetImageByIdAsync(id);
@@ -34,6 +38,7 @@ namespace ImageService.Controllers
         }
 
         [HttpPost("upload")]
+        [Authorize(Roles = "ADMIN,RADIOLOGIST")]
         public async Task<ActionResult<Image>> UploadImage(IFormFile file, int patientId, int imageTypeId, string imageType)
         {
             var uploadedImage = await _imageService.UploadImageAsync(file, patientId, imageTypeId, imageType);
@@ -41,6 +46,7 @@ namespace ImageService.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> DeleteImage(int id)
         {
             var success = await _imageService.DeleteImageAsync(id);
