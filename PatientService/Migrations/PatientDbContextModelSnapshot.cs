@@ -22,7 +22,7 @@ namespace PatientService.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("PatientService.Models.Condition", b =>
+            modelBuilder.Entity("Shared.Models.Condition", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +46,47 @@ namespace PatientService.Migrations
                     b.ToTable("Conditions");
                 });
 
-            modelBuilder.Entity("PatientService.Models.MedicalProcedure", b =>
+            modelBuilder.Entity("Shared.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ImageType")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<int>("ImageTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UploadedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PatientId");
+
+                    b.ToTable("Image");
+                });
+
+            modelBuilder.Entity("Shared.Models.MedicalProcedure", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -76,7 +116,7 @@ namespace PatientService.Migrations
                     b.ToTable("MedicalProcedures");
                 });
 
-            modelBuilder.Entity("PatientService.Models.Patient", b =>
+            modelBuilder.Entity("Shared.Models.Patient", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -94,7 +134,11 @@ namespace PatientService.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("firstName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("lastName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -103,15 +147,26 @@ namespace PatientService.Migrations
                     b.ToTable("Patients");
                 });
 
-            modelBuilder.Entity("PatientService.Models.MedicalProcedure", b =>
+            modelBuilder.Entity("Shared.Models.Image", b =>
                 {
-                    b.HasOne("PatientService.Models.Condition", "Condition")
+                    b.HasOne("Shared.Models.Patient", "Patient")
+                        .WithMany("Images")
+                        .HasForeignKey("PatientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("Shared.Models.MedicalProcedure", b =>
+                {
+                    b.HasOne("Shared.Models.Condition", "Condition")
                         .WithMany("Procedures")
                         .HasForeignKey("ConditionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PatientService.Models.Patient", "Patient")
+                    b.HasOne("Shared.Models.Patient", "Patient")
                         .WithMany("Procedures")
                         .HasForeignKey("PatientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -122,13 +177,15 @@ namespace PatientService.Migrations
                     b.Navigation("Patient");
                 });
 
-            modelBuilder.Entity("PatientService.Models.Condition", b =>
+            modelBuilder.Entity("Shared.Models.Condition", b =>
                 {
                     b.Navigation("Procedures");
                 });
 
-            modelBuilder.Entity("PatientService.Models.Patient", b =>
+            modelBuilder.Entity("Shared.Models.Patient", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("Procedures");
                 });
 #pragma warning restore 612, 618
