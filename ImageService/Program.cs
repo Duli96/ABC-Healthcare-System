@@ -1,13 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using ImageService.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
-// builder.Services.AddDbContext<PatientDbContext>(options =>
-//     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-//         new MySqlServerVersion(new Version(8, 0, 29))));
+builder.Services.AddDbContext<ImageServiceDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 29))));
 
 // // Register the IPatientService and its implementation
 // builder.Services.AddScoped<IPatientService, PatientServiceImpl>();
