@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ImageService.Data;
+using ImageService.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,10 +11,7 @@ builder.Services.AddDbContext<ImageServiceDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
         new MySqlServerVersion(new Version(8, 0, 29))));
 
-// // Register the IPatientService and its implementation
-// builder.Services.AddScoped<IPatientService, PatientServiceImpl>();
-// builder.Services.AddScoped<IMedicalProcedureService, MedicalProcedureServiceImpl>();
-// builder.Services.AddScoped<IConditionService, ConditionServiceImpl>();
+builder.Services.AddScoped<IImageService, ImageServiceImpl>();
 
 // Add OpenAPI / Swagger generation services
 builder.Services.AddEndpointsApiExplorer(); // Replaces AddOpenApi
