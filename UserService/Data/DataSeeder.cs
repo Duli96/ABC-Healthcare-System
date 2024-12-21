@@ -1,7 +1,7 @@
 using UserService.Data;
 using Shared.Models;
 
-namespace UserService.Services
+namespace UserService.Data
 {
     public class DataSeeder
     {
