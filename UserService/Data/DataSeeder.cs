@@ -1,4 +1,4 @@
-using UserService.Data;
+using Microsoft.EntityFrameworkCore;
 using Shared.Models;
 
 namespace UserService.Data
@@ -12,58 +12,44 @@ namespace UserService.Data
             _context = context;
         }
 
-        public void Seed()
+        public async Task SeedAsync()
         {
-            if (!_context.Roles.Any())
+            try
             {
-                var roles = new List<Role>
-                {
-                    new Role { Name = "ADMIN" },
-                    new Role { Name = "DOCTOR" },
-                    new Role { Name = "NURSE" },
-                    new Role { Name = "RADILOGIST" }
-                };
+                await _context.Database.EnsureCreatedAsync();
 
-                _context.Roles.AddRange(roles);
-                _context.SaveChanges();
+                if (!await _context.Roles.AnyAsync())
+                {
+                    var roles = new List<Role>
+                    {
+                       new Role { Name = "ADMIN", Description = "Administrator" },
+                        new Role { Name = "DOCTOR", Description = "Medical Doctor" },
+                        new Role { Name = "NURSE", Description = "Nurse" },
+                        new Role { Name = "RADIOLOGIST", Description = "Radiologist" }
+                    };
+
+                    await _context.Roles.AddRangeAsync(roles);
+                }
+
+                if (!await _context.Permissions.AnyAsync())
+                {
+                    var permissions = new List<Permission>
+                    {
+                        new Permission { Name = "ManageUsers" },
+                        new Permission { Name = "ViewPatients" },
+                        new Permission { Name = "ManagePatients" },
+                        new Permission { Name = "ViewImages" },
+                        new Permission { Name = "ManageImages"}
+                    };
+
+                    await _context.Permissions.AddRangeAsync(permissions);
+                }
+
+                await _context.SaveChangesAsync();
             }
-
-            if (!_context.Permissions.Any())
+            catch (Exception ex)
             {
-                var permissions = new List<Permission>
-                {
-                    new Permission { Name = "ManageUsers" },
-                    new Permission { Name = "ViewPatientRecords" },
-                    new Permission { Name = "UploadMedicalImages" },
-                    new Permission { Name = "ClassifyMedicalImages" },
-                    new Permission { Name = "GenerateDiagnosticReports" },
-                    new Permission { Name = "RetrieveMedicalImages" }
-                };
-
-                _context.Permissions.AddRange(permissions);
-                _context.SaveChanges();
-            }
-
-            if (!_context.RolePermissions.Any())
-            {
-                var adminRole = _context.Roles.First(r => r.Name == "ADMIN");
-                var doctorRole = _context.Roles.First(r => r.Name == "DOCTOR");
-                var nurseRole = _context.Roles.First(r => r.Name == "NURSE");
-                var radiologistRole = _context.Roles.First(r => r.Name == "RADIOLOGIST");
-
-                var permissions = _context.Permissions.ToList();
-
-                var rolePermissions = new List<RolePermission>
-                {
-                    new RolePermission { RoleId = adminRole.Id, PermissionId = permissions.First(p => p.Name == "ManageUsers").Id },
-                    new RolePermission { RoleId = adminRole.Id, PermissionId = permissions.First(p => p.Name == "ViewPatientRecords").Id },
-                    new RolePermission { RoleId = doctorRole.Id, PermissionId = permissions.First(p => p.Name == "GenerateDiagnosticReports").Id },
-                    new RolePermission { RoleId = nurseRole.Id, PermissionId = permissions.First(p => p.Name == "UploadMedicalImages").Id },
-                    new RolePermission { RoleId = radiologistRole.Id, PermissionId = permissions.First(p => p.Name == "ClassifyMedicalImages").Id }
-                };
-
-                _context.RolePermissions.AddRange(rolePermissions);
-                _context.SaveChanges();
+                throw new Exception("Error seeding data", ex);
             }
         }
     }

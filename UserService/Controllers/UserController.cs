@@ -3,6 +3,7 @@ using UserService.Services;
 using Shared.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UserService.DTOs;
 
 namespace UserService.Controllers
 {
@@ -33,10 +34,25 @@ namespace UserService.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> CreateUser(User user)
+        public async Task<IActionResult> CreateUser([FromBody] CreateUserDTO createUser)
         {
-            var createdUser = await _userService.CreateUserAsync(user);
-            return CreatedAtAction(nameof(GetUserById), new { id = createdUser.Id }, createdUser);
+            var hashedPassword = BCrypt.Net.BCrypt.HashPassword(createUser.Password);
+
+            var user = new User
+            {
+                FirstName = createUser.FirstName,
+                LastName = createUser.LastName,
+                Email = createUser.Email,
+                PasswordHash = hashedPassword,
+                RoleId = createUser.RoleId
+            };
+
+            var result = await _userService.CreateUserAsync(user);
+
+            if (result == null)
+                return BadRequest("Failed to create user");
+
+            return CreatedAtAction(nameof(GetUserById), new { id = result.Id }, result);
         }
 
         [HttpPut("{id}")]
