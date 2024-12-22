@@ -29,10 +29,11 @@ namespace AuthService.Controllers
 
             if (!response.IsSuccessStatusCode)
             {
-                return null;
+                return Unauthorized("Invalid email or password.");
             }
 
             var user = await response.Content.ReadFromJsonAsync<UserResponse>();
+            
             var token = JwtHelper.GenerateJwtToken(user, _configuration["Jwt:Key"]);
             return Ok(token.ToString());
 
