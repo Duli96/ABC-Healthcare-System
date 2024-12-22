@@ -10,7 +10,7 @@ namespace ImageService.Controllers
 {
     [Route("api/image")]
     [ApiController]
-    [Authorize] 
+    [Authorize]
     public class ImageController : ControllerBase
     {
         private readonly IImageService _imageService;
@@ -38,11 +38,21 @@ namespace ImageService.Controllers
         }
 
         [HttpPost("upload")]
-        [Authorize(Roles = "ADMIN,RADIOLOGIST")]
+        //[Authorize(Roles = "ADMIN,RADIOLOGIST")]
         public async Task<ActionResult<Image>> UploadImage(IFormFile file, int patientId, int imageTypeId, string imageType)
         {
-            var uploadedImage = await _imageService.UploadImageAsync(file, patientId, imageTypeId, imageType);
-            return CreatedAtAction(nameof(GetImage), new { id = uploadedImage.Id }, uploadedImage);
+            if (file == null || file.Length == 0)
+                return BadRequest("File is required.");
+
+            try
+            {
+                var image = await _imageService.UploadImageAsync(file, patientId, imageTypeId, imageType);
+                return Ok(image);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
         }
 
         [HttpDelete("{id}")]
