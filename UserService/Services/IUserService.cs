@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
 using Shared.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UserService.DTOs;
 
 namespace UserService.Services
 {
@@ -11,5 +13,6 @@ namespace UserService.Services
         Task<User> CreateUserAsync(User user);
         Task<bool> UpdateUserAsync(User user);
         Task<bool> DeleteUserAsync(int id);
+        Task<UserResponseDTO?> ValidateUserAsync(string email, string password);
     }
 }

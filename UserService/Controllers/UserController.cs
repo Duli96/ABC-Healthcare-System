@@ -74,5 +74,20 @@ namespace UserService.Controllers
 
             return NoContent();
         }
+
+
+        [HttpPost("validate")]
+        public async Task<IActionResult> ValidateUser([FromBody] ValidateUserRequestDTO request)
+        {
+            UserResponseDTO userResponseDTO = await _userService.ValidateUserAsync(request.Email, request.Password);
+
+            if (userResponseDTO == null)
+            {
+                return Unauthorized("Invalid email or password.");
+            }
+
+            return Ok(userResponseDTO);
+        }
     }
 }
+
